@@ -1,5 +1,5 @@
 const cors = require("cors");
-const express = require("express")
+const express = require("express");
 const bodyParser = require("body-parser");
 
 const sampleRoutes = require("./routes/samples/sample-routes");
@@ -13,9 +13,9 @@ app.options("*", cors());
 app.use("/api/samples", sampleRoutes);
 
 app.use(() => {
-    const error = new Error("Could not find this route.");
-    error.status = 404;
-    throw error;
-})
+  const error = new Error("Could not find this route.");
+  error.status = 404;
+  throw error;
+});
 
 module.exports = app;
