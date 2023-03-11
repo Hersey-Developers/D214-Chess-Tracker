@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const Table = mongoose.Schema({
     tableNum: Number,
-    contestant1: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
-    contestant2: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+    contestant1: { type: String },
+    contestant2: { type: String },
     userWhoWon: { type: Number, default: 0 }
 });
 
