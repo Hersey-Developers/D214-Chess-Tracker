@@ -1,0 +1,158 @@
+html {
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  width: 549px;
+  height: 442px;
+  top: 50%;
+  left: 49.5%;
+  transform: translate(-50%, -50%);
+}
+
+
+.box {
+    
+    position: absolute;
+    width: 549px;
+    height: 442px;
+    background: #FDFDFD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    
+}
+
+.image {
+    position: absolute;
+    left: 44px;
+    top: 32px;
+}
+
+h1 {
+    position: absolute;
+    width: 443px;
+    height: 54px;
+    left: 48px;
+    top: 70px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 39px;
+    line-height: 47px;
+
+    color: #000000;
+}
+.radio-input {
+    display: none;
+  }
+  
+  .radio-label {
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+    position: relative;
+    left: 58px;
+    top: 162px;
+  }
+  
+  .radio-box {
+    display: inline-block;
+    width: 60px;
+    height: 23px;
+    position: absolute;
+    top: 0;
+  }
+  
+  .radio-text {
+    display: inline-block;
+    position: relative;
+    font-size: 15px;
+    top: -2px;
+    margin: 0;
+    padding: 0 5px;
+  }
+  
+  .radio-box::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  .radio-input:checked ~ .radio-box::before {
+    background-color: #EBEBEB;
+  }
+  
+  .radio-input:checked ~ .radio-box {
+    border-color: #EBEBEB;
+  }
+  
+.putinusername {
+    position: absolute;
+    width: 443px;
+    height: 45px;
+    left: 40px;
+    top: 203px;
+    padding-left: 19px;
+    background: #EBEBEB;
+    border-radius: 10px;
+}
+
+.putinusername::placeholder {
+    position: absolute;
+    width: 36px;
+    height: 20px;
+    left: 19px;
+    top: 15px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    text-align: center;
+
+    color: #404040;
+
+}
+
+.putinpassword {
+    position: absolute;
+    width: 443px;
+    height: 45px;
+    left: 40px;
+    top: 261px;
+    padding-left: 19px;
+
+    background: #EBEBEB;
+    border-radius: 10px;
+}
+
+.putinpassword::placeholder {
+    position: absolute;
+    width: 443x;
+    height: 20px;
+    left: 19px;
+    top: 15px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    text-align: center;
+
+    color: #404040;
+}
+.login {
+    position: absolute;
+    width: 467px;
+    height: 45px;
+    left: 40px;
+    top: 319px;
+
+    background: #20DF7F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
