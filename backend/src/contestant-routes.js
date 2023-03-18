@@ -72,5 +72,3 @@ router.delete("/:contestantId", async (req, res) => {
 });
 
 module.exports = router;
-
-//this is a test
