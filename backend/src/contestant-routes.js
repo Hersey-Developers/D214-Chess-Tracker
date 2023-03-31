@@ -25,12 +25,12 @@ router.get("/", async (req, res) => {
 // Get a specific Contestant object
 router.get("/:contestantId", async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
-
-  // --------- DELETE THIS CONTENT --------
-  res.send({
-    message: "Hello World",
-  });
-  // -------------------------------------
+  try {
+      const Contestant = await Contestant.find(req.params.contestantId);
+      res.json(Contestant);
+  } catch (err) {
+      res.json({ message: err });
+  }
 });
 
 // Create a new Contestant object
@@ -51,24 +51,34 @@ router.post("/", async (req, res) => {
 
 // Update a specific Contestant object
 router.patch("/:contestantId", async (req, res) => {
-  // --- YOUR CODE GOES UNDER THIS LINE ---
+    try {
+        const Contestant = await Contestant.find(req.params.contestantId);
 
-  // --------- DELETE THIS CONTENT --------
-  res.send({
-    message: "Hello World",
-  });
-  // -------------------------------------
+        if (req.body.name) {
+            Contestant.name = req.body.name;
+        }
+
+        if (req.body.age) {
+          Contestant.age = req.body.age;
+        }
+
+        if (req.body.address) {
+          dummy.address = req.body.address;
+        }
+    } catch (err) {
+        res.json({ message: err });
+    }
 });
 
 // Delete a specific Contestant object
 router.delete("/:contestantId", async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
-
-  // --------- DELETE THIS CONTENT --------
-  res.send({
-    message: "Hello World",
-  });
-  // -------------------------------------
+  try {
+    const removedContestant = await Contestant.remove({ _id: req.params.contestantId });
+    res.json(removedContestant);
+  } catch (err) {
+      res.json({ message: err });
+  }
 });
 
 module.exports = router;
