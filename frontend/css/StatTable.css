@@ -1,0 +1,106 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #F7F7F7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.above {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout {
+  color: #4A9BE5;
+  border: none;
+  background: none;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  margin-left: 10px;
+  padding: 0 49px;
+}
+
+thead,
+tfoot {
+  text-align: left;
+  background: #C3FFDC;
+  border: 1px solid #C3FFDC;
+}
+
+.table {
+  position: absolute;
+  left: 44px;
+  top: 227px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.rank {
+  text-align: left;
+  height: 30px;
+  width: 136px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.city {
+  text-align: left;
+  height: 30px;
+  width: 308px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.points {
+  text-align: left;
+  height: 30px;
+  width: 136px;
+  height: 30px;
+
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.TBK {
+  text-align: left;
+  height: 30px;
+  width: 136px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+h1 {
+  margin-right: auto;
+  padding: 0 44px;
+}
+
+tr {
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #CBCBCB;
+}
+
+.view {
+  position: absolute;
+  display: flex;
+  left: 44px;
+  top: 149px;
+}
+
+.move {
+  position: relative;
+  left: 20px;
+
+}
