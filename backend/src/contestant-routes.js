@@ -26,11 +26,15 @@ router.get("/", async (req, res) => {
 router.get("/:contestantId", async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
   try {
-      const Contestant = await Contestant.find(req.params.contestantId);
-      res.json(Contestant);
+      const contestant1 = await Contestant.findById(req.params.contestantId);
+      console.log(contestant1);
+      res.json(contestant1);
   } catch (err) {
+      console.log(err);
       res.json({ message: err });
+
   }
+  
 });
 
 // Create a new Contestant object
@@ -52,19 +56,21 @@ router.post("/", async (req, res) => {
 // Update a specific Contestant object
 router.patch("/:contestantId", async (req, res) => {
     try {
-        const Contestant = await Contestant.find(req.params.contestantId);
+        const contestant1 = await Contestant.findById(req.params.contestantId);
 
         if (req.body.name) {
-            Contestant.name = req.body.name;
+            contestant1.name = req.body.name;
         }
 
-        if (req.body.age) {
-          Contestant.age = req.body.age;
+        if (req.body.active === true) {
+          contestant1.active = req.body.active;
         }
 
-        if (req.body.address) {
-          dummy.address = req.body.address;
+        else if (req.body.active === false ) {
+          contestant1.active = req.body.active; 
         }
+        const savedcontestant1 = await contestant1.save();
+        res.json(contestant1);
     } catch (err) {
         res.json({ message: err });
     }
@@ -74,9 +80,10 @@ router.patch("/:contestantId", async (req, res) => {
 router.delete("/:contestantId", async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
   try {
-    const removedContestant = await Contestant.remove({ _id: req.params.contestantId });
+    const removedContestant = await Contestant.deleteOne({ _id: req.params.contestantId });
     res.json(removedContestant);
   } catch (err) {
+      console.log(err);
       res.json({ message: err });
   }
 });
