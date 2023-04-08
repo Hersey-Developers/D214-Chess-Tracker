@@ -30,19 +30,20 @@ router.post("/login", async (req, res) => {
     }
 
     // Check if the password is correct
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    const isPasswordCorrect = await bcrypt.compare(password, user.passwordHash);
     if (!isPasswordCorrect) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
     // Create and sign a JSON Web Token (JWT)
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, "test", {
       expiresIn: "1h", // Token expires in 1 hour
     });
 
     // Return the token to the client
     res.status(200).json({ token });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
