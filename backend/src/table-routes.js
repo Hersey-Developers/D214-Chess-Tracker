@@ -52,6 +52,18 @@ router.post('/', async (req, res) => {
   
 });
 
+// Update the winner of the table
+router.patch('/:tableId/winner', async (req, res) => {
+    // --- YOUR CODE GOES UNDER THIS LINE --- 
+
+    // --------- DELETE THIS CONTENT --------
+    res.send({
+        message: "Hello World"
+    })
+    // -------------------------------------
+});
+
+
 // Update a specific Table object
 router.patch('/:tableId', async (req, res) => {
     // --- YOUR CODE GOES UNDER THIS LINE --- 
