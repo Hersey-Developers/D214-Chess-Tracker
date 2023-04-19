@@ -1,9 +1,12 @@
 // implement CRUD templates
 
+const req = require("express/lib/request");
 const Contestant = require("../models/contestant");
 
 const express = require("express");
 const router = express.Router();
+
+const { authenticateToken } = require("../middleware/auth");
 
 // Contestants Test Objects in MongoDB
 
@@ -12,13 +15,13 @@ const router = express.Router();
 // active: false
 
 // Get all Contestant objects
-router.get("/", async (req, res) => {
+router.get("/", authenticateToken, async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
   try {
     const Contestants = await Contestant.find();
     res.json(Contestants);
   } catch (err) {
-    res.json({ message: err});
+    res.json({ message: err });
   }
 });
 
@@ -49,7 +52,7 @@ router.post("/", async (req, res) => {
     const savedContestant = await contestant1.save();
     res.json(savedContestant);
   } catch (err) {
-    res.json({ message: err});
+    res.json({ message: err });
   }
 });
 
@@ -89,5 +92,3 @@ router.delete("/:contestantId", async (req, res) => {
 });
 
 module.exports = router;
-
-//this is a test
