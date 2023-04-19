@@ -1,5 +1,4 @@
 const Table = require('../models/table');
-
 const express = require('express');
 const router = express.Router();
 
@@ -15,12 +14,12 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     // --- YOUR CODE GOES UNDER THIS LINE --- 
-
-    // --------- DELETE THIS CONTENT --------
-    res.send({
-        message: "Hello World"
-    })
-    // -------------------------------------
+    try {
+        const tables = await Table.find();
+        res.json(tables);
+    } catch (err) {
+        res.json({ message: err });
+    }
 });
 
 // Get a specific Table object
@@ -37,12 +36,20 @@ router.get('/:tableId', async (req, res) => {
 // Create a new Table object
 router.post('/', async (req, res) => {
     // --- YOUR CODE GOES UNDER THIS LINE --- 
+    const table = new Table({
+        tableNum: req.body.tableNum,
+        contestant1: req.body.contestant1,
+        contestant2: req.body.contestant2,
+        userWhoWon: req.body.userWhoWon,
+    });
 
-    // --------- DELETE THIS CONTENT --------
-    res.send({
-        message: "Hello World"
-    })
-    // -------------------------------------
+    try{
+        const savedTable = await table.save();
+        res.json(savedTable);
+    } catch (err) {
+        res.json({ message: err });
+    }
+  
 });
 
 // Update a specific Table object
