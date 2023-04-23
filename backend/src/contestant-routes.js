@@ -46,6 +46,7 @@ router.post("/", async (req, res) => {
   const contestant1 = new Contestant({
     name: req.body.name,
     active: req.body.active,
+    school: req.body.school,
   });
 
   try {
@@ -71,6 +72,10 @@ router.patch("/:contestantId", async (req, res) => {
 
         else if (req.body.active === false ) {
           contestant1.active = req.body.active; 
+        }
+
+        if (req.body.school) {
+          contestant1.school = req.body.school;
         }
         const savedcontestant1 = await contestant1.save();
         res.json(contestant1);
