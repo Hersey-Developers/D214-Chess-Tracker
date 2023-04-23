@@ -1,3 +1,4 @@
+const table = require('../models/table');
 const Table = require('../models/table');
 const express = require('express');
 const router = express.Router();
@@ -55,12 +56,33 @@ router.post('/', async (req, res) => {
 // Update the winner of the table
 router.patch('/:tableId/winner', async (req, res) => {
     // --- YOUR CODE GOES UNDER THIS LINE --- 
+    try {
+        const userWhoWon = await Table.findById(req.params.tableId);
+        
+        if (req.body.userWhoWon) {
+            userWhoWon.tableId = req.body.tableId
+        }
 
-    // --------- DELETE THIS CONTENT --------
-    res.send({
-        message: "Hello World"
-    })
-    // -------------------------------------
+        if (req.body.userWhoWon == 0) {
+            userWhoWon.userWhoWon = req.body.userWhoWon
+        }
+
+        else if (req.body.userWhoWon == 1) {
+            userWhoWon.userWhoWon = req.body.userWhoWon
+        }
+
+        else if (req.body.userWhoWon == 2) {
+            userWhoWon.userWhoWon = req.body.userWhoWon
+        }
+
+        else {
+            return res.json({ message: "Error 422, Unable to Process Request." });
+        }
+        const savedTable = await userWhoWon.save();
+        res.json(savedTable);
+    } catch (err ) {
+        return res.json({ message: "Error 422, Unable To Process Request." });
+    }
 });
 
 
