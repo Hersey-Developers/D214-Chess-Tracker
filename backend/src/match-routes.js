@@ -2,7 +2,31 @@ const Match = require('../models/match');
 const express = require('express');
 const router = express.Router();
 
-// generate the GET, POST, GET /:id, PATCH /:id, and DELETE /:id routes for the Match model
+
+// id = 644d95e8f47c263fa531de7c
+// {
+//     "name": "JHHS vs. PHS 4/1 Meet",
+//     "round": 3,
+//     "_id": "644d95e8f47c263fa531de7c",
+//     "__v": 0
+// }
+
+
+// id = 644d960af47c263fa531de7e
+// {
+//     "name": "BG vs. PHS 4/2 Meet",
+//     "round": 2,
+//     "_id": "644d960af47c263fa531de7e",
+//     "__v": 0
+// }
+
+// id = 644d961e8ff3de3745f7940c
+// {
+//     "name": "EG vs. GBN 4/3 Meet",
+//     "round": 5,
+//     "_id": "644d961e8ff3de3745f7940c",
+//     "__v": 0
+// }
 
 router.get('/', async (req, res) => {
     try {
@@ -16,8 +40,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const Match1 = new Match({
         name:req.body.name,
-        age:req.body.age,
-        address:req.body.address,
+        round:req.body.round
     });
 
     try {
@@ -47,12 +70,8 @@ router.patch('/:matchId', async (req, res) => {
             Match1.name = req.body.name;
         }
 
-        if (req.body.age) {
-            Match1.age = req.body.age;
-        }
-
-        if (req.body.address) {
-            Match1.address = req.body.address;
+        if (req.body.round) {
+            Match1.round = req.body.round;
         }
         const SavedMatch1 = await Match1.save();
         res.json(Match1);
