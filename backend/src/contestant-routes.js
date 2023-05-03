@@ -18,7 +18,13 @@ const { authenticateToken } = require("../middleware/auth");
 
 router.post("/reset-participants", authenticateToken, async (req, res) => {
   // Your code goes in here
-
+  try {
+    const removedContestants = await Contestant.deleteMany({ _id: req.params.contestantId });
+    res.json(removedContestants);
+  } catch (err) {
+    console.log(err);
+    res.json({ message: err });
+  }
 });
 
 router.get("/", authenticateToken, async (req, res) => {
