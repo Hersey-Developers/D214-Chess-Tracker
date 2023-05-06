@@ -1,111 +1,82 @@
-const table = require('../models/table');
-const Table = require('../models/table');
-const express = require('express');
+const Table = require("../models/table");
+const express = require("express");
 const router = express.Router();
 
-// Tables Test Objects in MongoDB
-
-// 6408007f019b5db9eae79afd
-    // tableNum: 4
-    // contestant1: "2349j230r9j230r"
-    // contestant2: "92f3j2039fj0293fj23f"
-    // userWhoWon: 0
-
 // Get all Table objects
-
-router.get('/', async (req, res) => {
-    // --- YOUR CODE GOES UNDER THIS LINE --- 
-    try {
-        const tables = await Table.find();
-        res.json(tables);
-    } catch (err) {
-        res.json({ message: err });
-    }
+router.get("/", async (req, res) => {
+  try {
+    const tables = await Table.find();
+    res.json(tables);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
-// Get a specific Table object
-router.get('/:tableId', async (req, res) => {
-    // --- YOUR CODE GOES UNDER THIS LINE --- 
-
-    // --------- DELETE THIS CONTENT --------
-    res.send({
-        message: "Hello World"
-    })
-    // -------------------------------------
+// Get a specific Table object by ID
+router.get("/:tableId", async (req, res) => {
+  try {
+    const table = await Table.findById(req.params.tableId);
+    if (!table) {
+      return res.status(404).json({ message: "Table not found" });
+    }
+    res.json(table);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 // Create a new Table object
-router.post('/', async (req, res) => {
-    // --- YOUR CODE GOES UNDER THIS LINE --- 
+router.post("/", async (req, res) => {
+  try {
     const table = new Table({
-        tableNum: req.body.tableNum,
-        contestant1: req.body.contestant1,
-        contestant2: req.body.contestant2,
-        userWhoWon: req.body.userWhoWon,
+      tableNum: req.body.tableNum,
+      contestant1: req.body.contestant1,
+      contestant2: req.body.contestant2,
+      userWhoWon: req.body.userWhoWon,
     });
+    const newTable = await table.save();
+    res.status(201).json(newTable);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
-    try{
-        const savedTable = await table.save();
-        res.json(savedTable);
-    } catch (err) {
-        res.json({ message: err });
+// Update a specific Table object by ID
+router.patch("/:tableId", async (req, res) => {
+  try {
+    const table = await Table.findById(req.params.tableId);
+    if (!table) {
+      return res.status(404).json({ message: "Table not found" });
     }
-  
-});
-
-// Update the winner of the table
-router.patch('/:tableId/winner', async (req, res) => {
-    // --- YOUR CODE GOES UNDER THIS LINE --- 
-    try {
-        const userWhoWon = await Table.findById(req.params.tableId);
-        
-        if (req.body.userWhoWon) {
-            userWhoWon.tableId = req.body.tableId
-        }
-
-        if (req.body.userWhoWon == 0) {
-            userWhoWon.userWhoWon = req.body.userWhoWon
-        }
-
-        else if (req.body.userWhoWon == 1) {
-            userWhoWon.userWhoWon = req.body.userWhoWon
-        }
-
-        else if (req.body.userWhoWon == 2) {
-            userWhoWon.userWhoWon = req.body.userWhoWon
-        }
-
-        else {
-            return res.json({ message: "Error 422, Unable to Process Request." });
-        }
-        const savedTable = await userWhoWon.save();
-        res.json(savedTable);
-    } catch (err ) {
-        return res.json({ message: "Error 422, Unable To Process Request." });
+    // Only update fields that were actually passed in the request body
+    if (req.body.contestant1 != null) {
+      table.contestant1 = req.body.contestant1;
     }
+    if (req.body.contestant2 != null) {
+      table.contestant2 = req.body.contestant2;
+    }
+    if (req.body.userWhoWon != null) {
+      table.userWhoWon = req.body.userWhoWon;
+    }
+    const updatedTable = await table.save();
+    res.json(updatedTable);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
-
-// Update a specific Table object
-router.patch('/:tableId', async (req, res) => {
-    // --- YOUR CODE GOES UNDER THIS LINE --- 
-
-    // --------- DELETE THIS CONTENT --------
-    res.send({
-        message: "Hello World"
-    })
-    // -------------------------------------
-});
-
-// Delete a specific Table object
-router.delete('/:tableId', async (req, res) => {
-    // --- YOUR CODE GOES UNDER THIS LINE --- 
-
-    // --------- DELETE THIS CONTENT --------
-    res.send({
-        message: "Hello World"
-    })
-    // -------------------------------------
+// Delete a specific Table object by ID
+router.delete("/:tableId", async (req, res) => {
+  try {
+    const table = await Table.findById(req.params.tableId);
+    if (!table) {
+      return res.status(404).json({ message: "Table not found" });
+    }
+    await table.remove();
+    res.json({ message: "Table deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 module.exports = router;
