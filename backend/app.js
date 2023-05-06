@@ -6,6 +6,7 @@ const contestantRoutes = require("./src/contestant-routes");
 const tableRoutes = require("./src/table-routes");
 const userRoutes = require("./src/user-routes");
 const dummyRoutes = require("./src/dummy-routes");
+const matchRoutes = require("./src/match-routes");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use("/contestants", contestantRoutes);
 app.use("/tables", tableRoutes);
 app.use("/", userRoutes);
 app.use("/dummies", dummyRoutes);
+app.use("/matches", matchRoutes);
 
 app.use(() => {
   const error = new Error("Could not find this route.");
