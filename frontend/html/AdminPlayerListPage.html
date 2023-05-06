@@ -213,12 +213,13 @@ line-height: 42px;
       .greyLabel{
      
 
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 25px;
-line-height: 38px;
+        font-family: 'Poppins';
+          font-style: normal;
+        font-weight: 400;
+          font-size: 25px;
+          line-height: 38px;
 /* identical to box height */
+
 
 
 
@@ -226,7 +227,253 @@ color: #5A5A5A;
 
 
       }
+
+      .containerBox {
+        display: flex;
+        
+        position: absolute;
+        top: 149px;
+        align-self: self-start;
+        padding-left: 3%
+      }
+    
+      .input-box {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        
+      }
+      .greyTypingBox {
+        /* Auto layout */
+
+padding: 12px 13px;
+gap: 10px;
+
+
+width: 21.1em;
+height: 2.1em;
+border: none;
+;
+
+background: #EBEBEB;
+border-radius: 10px;
+
+
+
+
+
+      }
+.greenSumbitButton{
+margin-top: 10px;
+padding: 14px 7px 14px 15px;
+gap: 50px;
+
+
+width: 210px;
+height: 38px;
+padding-top: 10px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+color: white;
+background: #20DF7F;
+text-align: left;
+
+align-items: center;
+justify-content: flex-start;
+
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+border: transparent;
+}
+
+.container5 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: absolute;
+  padding-left: 3%;
+  top: 410px;
+}
+
+.title5 {
+  text-align: start;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.input-box5 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: 61px;
+  width: 93%;
+  background: #FDFDFD;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: transparent;
+
+}
+
+.input-box5 input {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border: transparent;
+}
+
+.buttons5 {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  border: transparent;
+}
+.blueButton{
+  
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+background-color: transparent;
+border: transparent;
+
+color: #4A9BE5;
+
+
+}
+.redButton{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+background-color: transparent;
+border: transparent;
+
+color: #FF5C5C;
+}
+.tables-container {
+  position: absolute;
+  padding-left: 3%;
+  top: 670px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.table {
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+.container7 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  top: 670px;
+  padding-left: 3%;
+
+}
+.bold {
+    
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height */
+  
+  
+  color: #000000;
+  
+  
+  /* Inside auto layout */
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.TextMain{
+    
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 38px;
+  /* identical to box height */
+  width: 610px;
+  height: 38px;
+  
       
+  
+  
+  color: #5A5A5A;
+  
+    }
+  
+    .textBox{
+  
+      box-sizing: border-box;
+  
+  
+  width: 510px;
+  height: 50px;
+  
+  border: 1px solid #C0C0C0;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  
+  
+  color: #000000; 
+  
+  
+  
+  
+  
+  
+    }
+    .container8 {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+     
+      
+      top: 757px;
+      left: 53%;
+    
+    }
+    .resetButton{
+      
+position: absolute;
+
+
+left: 76%;
+top: 400px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 5%;
+text-align: right;
+border: transparent;
+background: transparent;
+color: #FF5C5C;
+
+    }
+  
   </style>
 
   <body>
@@ -235,12 +482,84 @@ color: #5A5A5A;
         <button class="classLogoutButton" style="padding: 20;">Logout</button>
         </div>
 
-    <div class="greycontainer">
-        <p class="greyLabel">Match Controls</p>
-        <p class="greyLabel">Round Controls</p>
-
-
+        <div class="containerBox">
+          <div class="input-box">
+            <label for="input1" class="greyLabel" >Match Controls</label>
+            <input type="text" id="input1" name="input1" class="greyTypingBox" placeholder="Match Name">
+            <button type="submit" class="greenSumbitButton">Update Name></button>
+          </div>
+      
+          <div class="input-box" style="padding-left: 8%;">
+            <label for="input2" class="greyLabel">Round Controls</label>
+            <input type="text" id="input2" name="input2" class="greyTypingBox" placeholder="Current Round(Number)">
+            <button type="submit" class="greenSumbitButton">Update Round></button>
+          </div>
+        </div>
     </div>    
+    <div class="container5">
+      <div class="title5">Current Participants</div>
+  
+      <div class="input-box5">
+        <input type="text" id="participant" name="participant" placeholder="Enter participant's name">
+   
+      </div>
+  
+      <div class="buttons5">
+        <button type="submit" class="blueButton">+ Add Participant</button>
+        <button type="reset"  class="redButton" style="position: absolute; left:77%;">Reset Participants</button>
+      </div>
+    </div>
+    
+    <div class="container7">
+      <p class="TextMain">Table Locations</p>
+
+      <label for="dropdown1" class="bold">Table 1:</label>
+      <select id="dropdown1" class="textBox">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    
+      <label for="dropdown2" class="bold" style="padding-top: 10px;"></label>
+      <select id="dropdown2" class="textBox">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+
+      
+
+      <label for="dropdown3" class="bold" style="padding-top: 30px;">Table 3</label>
+      <select id="dropdown3" class="textBox">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    
+      <label for="dropdown4" class="bold" style="padding-top: 10px;"></label>
+      <select id="dropdown4" class="textBox">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
+    <div class="container8">
+   
+      <label for="dropdown5" class="bold">Table 2:</label>
+      <select id="dropdown5" class="textBox">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    
+      <label for="dropdown6" class="bold" style="padding-top: 10px;"></label>
+      <select id="dropdown6" class="textBox">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+      <button class = "resetButton">ResetTable</button>
+
        
         
  
