@@ -18,7 +18,7 @@ var contestants = {};
 function loadContestants() {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/contestants", {
+    fetch("https://d214-chess-tracker.herokuapp.com/contestants", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -50,7 +50,7 @@ function selectTable(event, tableId) {
 
 function loadTables() {
     
-    fetch("http://localhost:5000/tables")
+    fetch("https://d214-chess-tracker.herokuapp.com/tables")
         .then((response => response.json()))
         
         .then((data) => {
@@ -95,7 +95,7 @@ function loadTables() {
 function loadHeaderData() {
     const token = localStorage.getItem("token");
     // get the ongoing matches
-    fetch("http://localhost:5000/matches", {
+    fetch("https://d214-chess-tracker.herokuapp.com/matches", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

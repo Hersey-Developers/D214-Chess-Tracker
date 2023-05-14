@@ -13,7 +13,7 @@ function loadAdminButton() {
 function loadHeader() {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/matches", {
+    fetch("https://d214-chess-tracker.herokuapp.com/matches", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -42,7 +42,7 @@ function loadHeader() {
 function loadResults() {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/tables/results", {
+    fetch("https://d214-chess-tracker.herokuapp.com/tables/results", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

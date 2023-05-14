@@ -29,6 +29,7 @@ function submitFunction(event) {
     const password = passwordInput.value;
 
     // Validate that the email and password are not empty
+
     if (email.trim() === "" || password.trim() === "") {
         alert("Please enter an email and password");
         return;
@@ -46,7 +47,7 @@ function submitFunction(event) {
         accessLevel = "admin";
     }
 
-    fetch(`http://localhost:5000/login`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

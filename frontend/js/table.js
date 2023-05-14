@@ -9,7 +9,7 @@ var contestants = {};
 function loadContestants() {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/contestants", {
+    fetch("https://d214-chess-tracker.herokuapp.com/contestants", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function loadInfo() {
     const urlParams = new URLSearchParams(window.location.search);
     const tableId = urlParams.get("tableId");
         
-    fetch(`http://localhost:5000/tables/${tableId}`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/tables/${tableId}`, {
         method: "GET",
     })
     .then((response) => response.json())
@@ -82,7 +82,7 @@ function setWinner(userWhoWon) {
     const tableId = urlParams.get("tableId");
     const token = localStorage.getItem("token");
     
-    fetch(`http://localhost:5000/tables/${tableId}`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/tables/${tableId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",

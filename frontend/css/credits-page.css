@@ -1,0 +1,48 @@
+html {
+    background-color: #303030;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    padding: 20px;
+}
+
+.backButton {
+    color: gray;
+    text-decoration: none;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+img {
+    height: 40px;
+}
+
+p {
+    margin: 0px;
+    color: rgb(212, 212, 212);
+    font-weight: medium;
+}
+
+a {
+    margin: 0px;
+    color: rgb(212, 212, 212);
+    font-weight: medium;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(212, 212, 212);
+    font-weight: medium;
+    text-decoration: underline;
+}
+
+
+h3 {
+    color: white;
+    margin-bottom: 0;
+}

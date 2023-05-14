@@ -23,7 +23,7 @@ var contestants = {};
 function getOngoingMatch() {
     const token = localStorage.getItem("token");
     // get the ongoing matches
-    fetch("http://localhost:5000/matches", {
+    fetch("https://d214-chess-tracker.herokuapp.com/matches", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function deleteContestant(id) {
 
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/contestants/${id}`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/contestants/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const deselectStudent = (tableId, fieldNo) => {
     tableAssignments[tableId][fieldNo] = undefined;
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/tables/${tableId}`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/tables/${tableId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -144,7 +144,7 @@ function selectStudent(tableId, contestantId, fieldNo) {
 
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/tables/${tableId}`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/tables/${tableId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -186,7 +186,7 @@ function assignTable(event, tableId, fieldNo) {
 
 
 function loadTables() {
-    fetch("http://localhost:5000/tables")
+    fetch("https://d214-chess-tracker.herokuapp.com/tables")
         .then((response => response.json()))
         .then((data) => {
             const tables = data;
@@ -259,7 +259,7 @@ function loadTables() {
 
 function resetTables() {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/tables/reset-tables", {
+    fetch("https://d214-chess-tracker.herokuapp.com/tables/reset-tables", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -275,7 +275,7 @@ function resetTables() {
 function loadContestants() {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/contestants", {
+    fetch("https://d214-chess-tracker.herokuapp.com/contestants", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -324,7 +324,7 @@ updateRoundButton.addEventListener("click", function (event) {
     const round = roundInput.value;
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/matches/${matchId}`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/matches/${matchId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -349,7 +349,7 @@ updateNameButton.addEventListener("click", function (event) {
     const name = nameInput.value;
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/matches/${matchId}`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/matches/${matchId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -387,7 +387,7 @@ addParticipant.addEventListener("click", function (event) {
     }
 
 
-    fetch(`http://localhost:5000/contestants`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/contestants`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -418,7 +418,7 @@ resetButton.addEventListener("click", function (event) {
     event.preventDefault();
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/contestants/reset-participants`, {
+    fetch(`https://d214-chess-tracker.herokuapp.com/contestants/reset-participants`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
