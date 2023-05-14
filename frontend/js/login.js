@@ -6,7 +6,7 @@ const loginButton = document.getElementByClass("login");
 const coachButton = document.getElementById("option1");
 const adminButton = document.getElementById("option2");
 
-var coachMode = false;
+var coachMode = true;
 var adminMode = false;
 
 function coachClicked() {
@@ -39,6 +39,37 @@ function submitFunction(event) {
         return;
     }
 
-    
+    let accessLevel;
+    if (coachMode) {
+        accessLevel = "coach";
+    } else {
+        accessLevel = "admin";
+    }
+
+    fetch(`http://localhost:5000/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password, accessLevel })
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.message) {
+                alert(data.message);
+            } else {
+                // Save the token in local storage
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("accessLevel", coachMode ? "coach" : "admin");
+                // Redirect to the home page
+                window.location.href = "/frontend/index.html";
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            alert(error);
+        })
+
+
 
 }

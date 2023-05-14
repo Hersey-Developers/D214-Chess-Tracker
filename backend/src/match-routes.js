@@ -1,6 +1,8 @@
 const Match = require("../models/match");
 const express = require("express");
 const router = express.Router();
+const authenticateToken = require("../middleware/auth");
+
 
 
 // id = 644d95e8f47c263fa531de7c
@@ -28,7 +30,7 @@ const router = express.Router();
 //     "__v": 0
 // }
 
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken, async (req, res) => {
     try {
         const Matches = await Match.find();
         res.json(Matches);
@@ -37,7 +39,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', authenticateToken, async (req, res) => {
     const Match1 = new Match({
         name:req.body.name,
         round:req.body.round
@@ -51,7 +53,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/:matchId', async (req, res) => {
+router.get('/:matchId', authenticateToken, async (req, res) => {
     try {
         const Match1 = await Match.findById(req.params.matchId);
         console.log(Match1);
@@ -62,7 +64,7 @@ router.get('/:matchId', async (req, res) => {
     }
 });
 
-router.patch('/:matchId', async (req, res) => {
+router.patch('/:matchId', authenticateToken, async (req, res) => {
     try {
         const Match1 = await Match.findById(req.params.matchId);
         
@@ -80,7 +82,7 @@ router.patch('/:matchId', async (req, res) => {
     }
 });
 
-router.delete('/:matchId', async (req, res) => {
+router.delete('/:matchId', authenticateToken, async (req, res) => {
     try {
         const RemovedMatch = await Match.deleteOne({ _id: req.params.matchId});
         res.json(RemovedMatch);

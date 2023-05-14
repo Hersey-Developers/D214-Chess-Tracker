@@ -20,10 +20,12 @@ app.use("/", userRoutes);
 app.use("/dummies", dummyRoutes);
 app.use("/matches", matchRoutes);
 
-app.use(() => {
+app.use((req, res) => {
   const error = new Error("Could not find this route.");
   error.status = 404;
-  throw error;
+
+  res.status(404).json({ message: error.message });
+  
 });
 
 module.exports = app;

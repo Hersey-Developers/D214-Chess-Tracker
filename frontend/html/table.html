@@ -177,21 +177,21 @@ line-height: 42px;
     <button class="classLogoutButton" style="padding: 20;">Logout</button>
     </div>
     
-    <button  class="backButton">< back</button>
+    <a class="backButton" href="tables.html">< Back</a>
 
     <div class="containerWords">
       <p id="bigLable" style="position: absolute; top: 194px; left: 56px;">Submit Game</p>
       <p id="smallLable" style="position: absolute; top: 254px; left: 56px; padding: 2px;">Table 1</p> 
-
-
-  </div>
-    
-    <div class="button-container">
-        <button class="result-button" style="background-color: #20DF7F;">Player 1 won</button>
-        <button class="result-button" style="background-color: #E3E3E3;">Draw</button>
-        <button class="result-button" style="background-color: #4A9BE5;">Player 2 won</button>
-        
     </div>
+
+
+    <div id="buttons" class="button-container">
+        <button id="1" class="result-button" style="background-color: #20DF7F;">Player 1 won</button>
+        <button id="2" class="result-button" style="background-color: #E3E3E3;">Draw</button>
+        <button id="3" class="result-button" style="background-color: #4A9BE5;">Player 2 won</button>
+    </div>
+    <script src="../js/logout.js"></script>
+    <script src="../js/table.js"></script>
 
   </body>       
 </html>

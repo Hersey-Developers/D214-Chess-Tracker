@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>PlayerListAdmidPage</title>
+    <title>D214 Chess Tracker Admin Page</title>
     <meta name="robots" content="noindex" />
     <meta name="description" content="Just another website..." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +21,6 @@
         /* Rectangle 18 */
 
 
-position: absolute;
 width: 100%;
 height: 100px;
 left: 0px;
@@ -51,7 +50,6 @@ display: flex;
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
-    margin-left: auto;
     padding-right: 3%;  
 /* identical to box height */
     background-color: transparent;
@@ -167,8 +165,6 @@ font-size: 28px;
 line-height: 42px;
     }
     .containerbutton {
-        position: absolute;
-        top: 150 px;
         
       }
 
@@ -230,8 +226,8 @@ color: #5A5A5A;
 
       .containerBox {
         display: flex;
+        margin-top: 50px;
         
-        position: absolute;
         top: 149px;
         align-self: self-start;
         padding-left: 3%
@@ -294,9 +290,7 @@ border: transparent;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  position: absolute;
   padding-left: 3%;
-  top: 410px;
 }
 
 .title5 {
@@ -310,9 +304,9 @@ border: transparent;
   justify-content: center;
   margin-bottom: 10px;
   height: 61px;
-  width: 93%;
+  width: 600px;
+  margin-top: 10px;
   background: #FDFDFD;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: transparent;
 
@@ -323,16 +317,26 @@ border: transparent;
   border: 1px solid #ccc;
   padding: 5px;
   border: transparent;
+  background-color:rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .buttons5 {
+  width: 600px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   background-color: transparent;
   border: transparent;
 }
-.blueButton{
+
+.buttons5 *{
   
+  text-align: left;
+}
+
+.blueButton{
+  margin-top: 5px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
@@ -359,9 +363,7 @@ border: transparent;
 color: #FF5C5C;
 }
 .tables-container {
-  position: absolute;
   padding-left: 3%;
-  top: 670px;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -371,12 +373,8 @@ color: #FF5C5C;
   flex-direction: column;
 }
 .container7 {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  top: 670px;
   padding-left: 3%;
 
 }
@@ -450,17 +448,15 @@ color: #FF5C5C;
       flex-direction: column;
      
       
-      top: 757px;
+      top: 850px;
       left: 53%;
     
     }
     .resetButton{
       
-position: absolute;
 
 
 left: 76%;
-top: 400px;
 
 font-family: 'Poppins';
 font-style: normal;
@@ -473,95 +469,114 @@ background: transparent;
 color: #FF5C5C;
 
     }
+
+
+    #participants {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 600px;
+    }
+
+    #participants p {
+      margin :0
+    }
+
+    .participant {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 5px;
+      height: 30px;
+      background-color:rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      border:rgba(0, 0, 0, 0.1) solid 1px;
+    }
+
+    .delete {
+      color: red;
+      font-size: 12px;
+    }
+
+    #tables {
+      display: flex;
+      flex-direction: row;
+      flex-wrap:wrap;
+      gap: 5px;
+      width: 1200px;
+      max-width: 1200px;
+    }
+
+    .table {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table select {
+      margin-top: 5px;
+    }
   
   </style>
 
   <body>
     <div class="header">
         <p class="headerText" style="padding: 20;"> D214 Chess Tracker</p>
-        <button class="classLogoutButton" style="padding: 20;">Logout</button>
+        <a href="/frontend/html/tables.html" class="classLogoutButton" style="padding: 20;">Go to Coach View</a>
+        <button onclick="logout()" class="classLogoutButton" style="padding: 20;">Logout</button>
         </div>
 
         <div class="containerBox">
           <div class="input-box">
-            <label for="input1" class="greyLabel" >Match Controls</label>
+            <label for="input1" class="greyLabel" >Match Name</label>
             <input type="text" id="input1" name="input1" class="greyTypingBox" placeholder="Match Name">
-            <button type="submit" class="greenSumbitButton">Update Name></button>
+            <button id="updateName" type="submit" class="greenSumbitButton">Update Name ></button>
+            <p class="success" id="successName"></p>
           </div>
       
           <div class="input-box" style="padding-left: 8%;">
-            <label for="input2" class="greyLabel">Round Controls</label>
+            <label for="input2" class="greyLabel">Round Number</label>
             <input type="text" id="input2" name="input2" class="greyTypingBox" placeholder="Current Round(Number)">
-            <button type="submit" class="greenSumbitButton">Update Round></button>
+            <button id="updateRound" type="submit" class="greenSumbitButton">Update Round ></button>
+            <p class="success" id="successRound"></p>
           </div>
         </div>
     </div>    
     <div class="container5">
       <div class="title5">Current Participants</div>
-  
+
+      <div id="participants">
+
+
+      </div>
       <div class="input-box5">
-        <input type="text" id="participant" name="participant" placeholder="Enter participant's name">
-   
+        <input type="text" id="participant" name="participant" placeholder="Participant Name">
+        <input type="text" id="participantSchool" name="participant" placeholder="Participant School">
       </div>
   
       <div class="buttons5">
-        <button type="submit" class="blueButton">+ Add Participant</button>
-        <button type="reset"  class="redButton" style="position: absolute; left:77%;">Reset Participants</button>
+        <button id="addParticipant" type="submit" class="blueButton">+ Add Participant</button>
+        <button id="reset" type="reset"  class="redButton">Reset Participants</button>
       </div>
     </div>
     
     <div class="container7">
+      <br/>
       <p class="TextMain">Table Locations</p>
+      <div id="tables">
 
-      <label for="dropdown1" class="bold">Table 1:</label>
-      <select id="dropdown1" class="textBox">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-    
-      <label for="dropdown2" class="bold" style="padding-top: 10px;"></label>
-      <select id="dropdown2" class="textBox">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-
-      
-
-      <label for="dropdown3" class="bold" style="padding-top: 30px;">Table 3</label>
-      <select id="dropdown3" class="textBox">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-    
-      <label for="dropdown4" class="bold" style="padding-top: 10px;"></label>
-      <select id="dropdown4" class="textBox">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <button onclick="resetTables()" class = "resetButton">Reset Table</button>
+      <br/>
+      <br/>
     </div>
-    <div class="container8">
-   
-      <label for="dropdown5" class="bold">Table 2:</label>
-      <select id="dropdown5" class="textBox">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-    
-      <label for="dropdown6" class="bold" style="padding-top: 10px;"></label>
-      <select id="dropdown6" class="textBox">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-      <button class = "resetButton">ResetTable</button>
 
        
         
+  <script src="../js/logout.js"></script>
+  <script src="../js/admin.js"></script>
  
   </body>
 </html>

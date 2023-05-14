@@ -1,4 +1,5 @@
 // implement CRUD templates
+const cors = require("cors");
 
 const req = require("express/lib/request");
 const Contestant = require("../models/contestant");
@@ -15,6 +16,10 @@ const authenticateToken = require("../middleware/auth");
 // active: false
 
 // Get all Contestant objects
+
+router.use(cors());
+router.options("*", cors());
+
 
 router.post("/reset-participants", authenticateToken, async (req, res) => {
   // Your code goes in here
@@ -38,7 +43,7 @@ router.get("/", authenticateToken, async (req, res) => {
 });
 
 // Get a specific Contestant object
-router.get("/:contestantId", async (req, res) => {
+router.get("/:contestantId", authenticateToken, async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
   try {
     const contestant1 = await Contestant.findById(req.params.contestantId);
@@ -51,12 +56,12 @@ router.get("/:contestantId", async (req, res) => {
 });
 
 // Create a new Contestant object
-router.post("/", async (req, res) => {
+router.post("/", authenticateToken, async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
   const contestant1 = new Contestant({
     name: req.body.name,
     active: req.body.active,
-    school: req.body.school,
+    school: req.body.school
   });
 
   try {
@@ -68,7 +73,7 @@ router.post("/", async (req, res) => {
 });
 
 // Update a specific Contestant object
-router.patch("/:contestantId", async (req, res) => {
+router.patch("/:contestantId", authenticateToken, async (req, res) => {
   try {
     const contestant1 = await Contestant.findById(req.params.contestantId);
 
@@ -93,7 +98,7 @@ router.patch("/:contestantId", async (req, res) => {
 });
 
 // Delete a specific Contestant object
-router.delete("/:contestantId", async (req, res) => {
+router.delete("/:contestantId", authenticateToken, async (req, res) => {
   // --- YOUR CODE GOES UNDER THIS LINE ---
   try {
     const removedContestant = await Contestant.deleteOne({
